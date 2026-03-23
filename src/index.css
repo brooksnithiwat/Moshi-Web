@@ -1,1 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+Thai:wght@100..900&display=swap');
 @import "tailwindcss";
+.petal {
+  position: absolute;
+  top: -10vh;
+  left: 0;
+  pointer-events: none;
+
+  background-image: url('/rose-petal.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  opacity: var(--op, 0.8);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate(0, var(--y-start)) rotate(var(--r0));
+  }
+  100% {
+    transform: translate(80px, var(--y-end)) rotate(var(--r1));
+  }
+}

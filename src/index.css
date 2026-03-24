@@ -5,11 +5,9 @@
   top: -10vh;
   left: 0;
   pointer-events: none;
-
   background-image: url('/rose-petal.png');
   background-size: cover;
   background-repeat: no-repeat;
-
   opacity: var(--op, 0.8);
   animation: fall linear infinite;
 }
@@ -21,4 +19,24 @@
   100% {
     transform: translate(80px, var(--y-end)) rotate(var(--r1));
   }
+}
+
+
+@keyframes glowSwitch {
+  0% {
+    text-shadow: 0 0 40px rgba(51, 2, 55, 0.9); /* ม่วง */
+  }
+  25% {
+    text-shadow: 0 0 40px rgba(163, 57, 250, 0.9); /* เหลือง */
+  }
+  50% {
+    text-shadow: 0 0 40px rgba(203, 139, 255, 0.9); /* เหลือง */
+  }
+  100% {
+    text-shadow: 0 0 40px rgba(139, 15, 255, 0.9); /* กลับม่วง */
+  }
+}
+
+.animate-glow {
+  animation: glowSwitch 3s infinite ease-in-out;
 }

@@ -231,6 +231,7 @@ export default function MeteorCurtain({
                 transition: "color 1.2s ease, letter-spacing 1.2s ease",
                 letterSpacing: showText ? "0.18em" : "0.5em",
                 fontFamily: "Great Vibes",
+                textAlign: "center",
                 textShadow: showText
     ? "0 0 10px rgba(168,85,247,0.8), 0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.4)"
     : "none"

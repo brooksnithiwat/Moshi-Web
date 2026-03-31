@@ -23,7 +23,7 @@ function App() {
 
 <img src={icon} alt="icon" className='w-90 h-auto rounded-[150px] shadow-[0_0_30px_rgba(168,85,247,0.8)] hover:shadow-[0_0_40px_rgba(255,255,0,0.9)] transition-shadow duration-500'/>
 <div className="sidebar flex flex-col gap-4 p-4">
-<h1 className="font-[Great_Vibes] text-6xl font-bold text-white py-4 animate-glow">
+<h1 className="font-[Great_Vibes] text-6xl font-bold text-white py-4 animate-glow text-center">
   Blackrose Commission
 </h1>
 <button className='font-sans bg-blue-500 text-white px-12 py-4 rounded-full text-xl'>Term of use</button>

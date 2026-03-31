@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function createPetals(container, count = 28) {
+function FireFly(container, count = 28) {
   for (let i = 0; i < count; i++) {
     const el = document.createElement('div');
     el.className = 'petal';
@@ -30,12 +30,12 @@ function createPetals(container, count = 28) {
   }
 }
 
-export default function RosePetals() {
+export default function FireFlyEffect() {
   useEffect(() => {
     const container = document.querySelector('.petal-container');
     if (!container) return;
 
-    createPetals(container, 28);
+    FireFly(container, 28);
 
     return () => {
       container.innerHTML = "";

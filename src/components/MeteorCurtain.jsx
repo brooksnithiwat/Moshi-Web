@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
+const CURTAIN_SEEN_KEY = "moshi-meteor-curtain-seen";
+
 // ─── MeteorCanvas ──────────────────────────────────────────────────────────────
 // วาดดาวและดาวตกบน canvas
 function MeteorCanvas({ speed = 3, density = 4, onComplete }) {
@@ -161,16 +163,23 @@ export default function MeteorCurtain({
   onDone,
   children,
 }) {
-  const [phase, setPhase] = useState("meteor"); // meteor → text → reveal → done
-  const [curtainUp, setCurtainUp] = useState(false);
+  const [phase, setPhase] = useState(() => {
+    if (typeof window !== "undefined" && window.sessionStorage.getItem(CURTAIN_SEEN_KEY) === "1") {
+      return "done";
+    }
+
+    return "meteor";
+  }); // meteor → text → reveal → done
 
   const handleMeteorDone = useCallback(() => {
     setPhase("text");
     setTimeout(() => {
       setPhase("reveal");
-      setCurtainUp(true);
       setTimeout(() => {
         setPhase("done");
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem(CURTAIN_SEEN_KEY, "1");
+        }
         onDone?.();
       }, 900);
     }, revealDelay + 800);
@@ -229,7 +238,6 @@ export default function MeteorCurtain({
                 color: showText ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0)",
                 letterSpacing: "0.18em",
                 transition: "color 1.2s ease, letter-spacing 1.2s ease",
-                letterSpacing: showText ? "0.18em" : "0.5em",
                 fontFamily: "Great Vibes",
                 textAlign: "center",
                 textShadow: showText

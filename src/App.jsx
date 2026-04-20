@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom"
 function App() {
   const { isDark, toggleTheme } = useTheme();
   const { lang, toggleLang } = useLanguage();
+  
   return (
     <>
 
@@ -45,9 +46,25 @@ function App() {
                   {lang === "TH" ? "กติการการจ้าง" : "Term of use"}
                 </NavButton>
             
-                <NavButton to="/queue">
-                  {lang === "TH" ? "สอบถามคิว" : "Commission Queue"}
-                </NavButton>
+          
+                <a href="https://1drv.ms/x/c/7283f0ec04431ddc/IQAA32ebDy1ITo_MzFJs0bVvAcicBHhbPCNKYinM_CnGmJI"
+                className="
+font-semibold 
+font-sans text-center
+
+bg-gradient-to-r from-purple-200 to-purple-500
+hover:bg-gradient-to-r hover:from-yellow-200 hover:to-yellow-500
+
+border-2 border-white
+text-white
+w-full lg:w-90
+px-20 py-4 rounded-full
+
+shadow-[0_0_10px_rgba(255,255,255,0.8)]
+
+transition-all duration-700
+text-ml lg:text-xl
+">{lang === "TH" ? "สอบถามคิว" : "Commission Queue"}</a>
                 <NavButton to="/payment">
                   {lang === "TH" ? "ชำระเงิน" : "Payment"}
                 </NavButton>

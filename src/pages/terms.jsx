@@ -148,7 +148,10 @@ function SlideIn({ children, delay = 0, className = "" }) {
   );
 }
 
-function CommissionBlocks({ blocks }) {
+function CommissionBlocks({
+  blocks,
+  onPreviewImage,
+}) {
   if (!blocks || blocks.length === 0) return null;
 
   return (
@@ -162,13 +165,20 @@ function CommissionBlocks({ blocks }) {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-3">
               {block.images.map((src, imageIndex) => (
-                <img
+                <button
                   key={`${block.title}-${imageIndex}`}
-                  src={src}
-                  alt={`${block.title} sample ${imageIndex + 1}`}
-                  className="w-full aspect-square object-cover rounded-xl border border-white/20 shadow-lg"
-                  loading="lazy"
-                />
+                  type="button"
+                  className="group relative w-full overflow-hidden rounded-xl border border-white/20 shadow-lg"
+                  onClick={() => onPreviewImage(src)}
+                  aria-label={`Preview ${block.title} sample ${imageIndex + 1}`}
+                >
+                  <img
+                    src={src}
+                    alt={`${block.title} sample ${imageIndex + 1}`}
+                    className="w-full aspect-square object-cover object-top"
+                    loading="lazy"
+                  />
+                </button>
               ))}
             </div>
             <p className="text-white/90">{block.description}</p>
@@ -183,6 +193,23 @@ export default function Terms() {
   const { lang, toggleLang } = useLanguage();
   const { isDark, toggleTheme } = useTheme();
   const selectedLang = lang === "EN" ? "EN" : "TH";
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    if (!selectedImage) return undefined;
+
+    const handleEsc = (event) => {
+      if (event.key === "Escape") setSelectedImage(null);
+    };
+
+    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    };
+  }, [selectedImage]);
 
   const content = {
     TH: {
@@ -358,7 +385,10 @@ export default function Terms() {
                     {section.gallery === "fullScale" && section.items[0] && (
                       <p className="text-white/85 mb-2">{section.items[0]}</p>
                     )}
-                    <CommissionBlocks blocks={commissionBlocks[selectedLang][section.gallery]} />
+                    <CommissionBlocks
+                      blocks={commissionBlocks[selectedLang][section.gallery]}
+                      onPreviewImage={setSelectedImage}
+                    />
                   </>
                 ) : (
                   <ul className="space-y-2 list-disc pl-6">
@@ -372,6 +402,21 @@ export default function Terms() {
           ))}
         </div>
       </div>
+
+      {selectedImage && (
+        <button
+          type="button"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setSelectedImage(null)}
+          aria-label="Close preview"
+        >
+          <img
+            src={selectedImage}
+            alt="Selected preview"
+            className="max-h-[90vh] max-w-[90vw] rounded-2xl border border-white/25 object-contain shadow-2xl"
+          />
+        </button>
+      )}
     </div>
   );
 }

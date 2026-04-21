@@ -43,11 +43,11 @@ function App() {
               </h1>
               <div className="flex flex-col gap-4 p-4 justify-center items-center">
                 <NavButton to="/terms">
-                  {lang === "TH" ? "กติการการจ้าง" : "Term of use"}
+                  {lang === "TH" ? "ข้อตกลง" : "Term of use"}
                 </NavButton>
             
           
-                <a href="https://1drv.ms/x/c/7283f0ec04431ddc/IQAA32ebDy1ITo_MzFJs0bVvAcicBHhbPCNKYinM_CnGmJI"
+                <a href="https://docs.google.com/spreadsheets/d/1ByiLql1Dn0bKtPglQsxWsGpOvKv1n0fUnuvcdA-kAOs/edit?usp=drivesdk"
                 className="
 font-semibold 
 font-sans text-center
@@ -66,7 +66,7 @@ transition-all duration-700
 text-ml lg:text-xl
 ">{lang === "TH" ? "สอบถามคิว" : "Commission Queue"}</a>
                 <NavButton to="/payment">
-                  {lang === "TH" ? "ชำระเงิน" : "Payment"}
+                  {lang === "TH" ? "ช่องทางการชำระเงิน" : "Payment"}
                 </NavButton>
               </div>
               <div className="bottombar flex pr-8 px-4 gap-6 p-4 flex items-center justify-center">

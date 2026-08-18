@@ -229,6 +229,7 @@ export default function Terms() {
             "ส่งงานผ่านไดรฟ์ มีอายุ 3 เดือน",
             "มัดจำ หรือชำระเต็มจำนวนก่อนลงคิว",
             "ลูกค้าที่ว่าจ้างในราคา 230 ขึ้นไปครบ 10 งานจะได้รีเควสฟรีจากนักวาด 1 งาน",
+            "ห้ามนำงานไปใช้สำหรับการเทรน AI ทุกประเภท"
           ],
         },
         {
@@ -283,6 +284,7 @@ export default function Terms() {
             "Files will be delivered via Google Drive and kept for 3 months",
             "Deposit or full payment is required before queuing",
             "Clients who commission 10 works priced at 15 USD or higher will receive 1 free request from the artist",
+            "AI generating is prohibited"
           ],
         },
         {
